@@ -90,3 +90,62 @@ int lista_size(element * LISTA){
 	}
 	return c;
 }
+//RETORNA UM PONTEIRO PARA UM NÓ EM DETERMINADO INDICE 
+element * atPos(element * LISTA, int index){
+	int c= 0;
+	element * percorre = LISTA;
+
+	while(percorre!=NULL){
+		if(c==index){
+			return percorre;
+		}
+		percorre = percorre-> prox;
+		c++;
+	}
+}
+
+//RETORNA O INDICE DE DETERMINADO NÓ
+int indexOf(element * LISTA, element * Node){
+	int c=0;
+	while(LISTA != NULL){
+		if(LISTA == Node) return c;
+		LISTA = LISTA->prox;
+		c++;
+	}
+}
+
+//TROCA DOIS NÓS DE POSICAO
+void node_swipe(element * LISTA, element * nodeA, element * nodeB){
+	if(nodeA == nodeB) return;
+	int indexA = indexOf(LISTA, nodeA); // INDEX NÓ A
+	int indexB = indexOf(LISTA, nodeB); // INDEX NÓ B
+
+	// PONTEIRO PARA O NÓ ANTERIOR AO A
+	element * pa = atPos(LISTA, indexA-1); 
+	// PONTEIRO PARA O NÓ ANTERIOR AO B
+	element * pb = atPos(LISTA, indexB-1);
+
+	pa->prox = nodeB; //ANTERIOR DE A APONTA PARA B
+	pb->prox = nodeA; //ANTERIOR DE B APONTA PARA A
+
+	element * aux = nodeA->prox; //SALVA O ENDEREÇO NO QUE A APONTA
+	nodeA->prox = nodeB->prox; //A APONTA PARA O PROX DE B
+	nodeB->prox = aux; //B APONTA PARA O PROX DE A
+}
+
+//BUBBLE SORT
+void lista_ordena(element * LISTA){
+	int i, j;
+	int size = lista_size(LISTA);
+
+	for(i = 0 ; i < size-1; i++){
+		for(j = 0 ; j < size -i -1 ; j++){
+			element * nodeJ = atPos(LISTA, j+2);
+			element * nodeI = atPos(LISTA, j+1);
+			if(nodeI->ligacoes < nodeJ->ligacoes){
+				node_swipe(LISTA, nodeI, nodeJ);
+			}
+		}	
+	}
+
+}
