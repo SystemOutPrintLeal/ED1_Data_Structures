@@ -42,3 +42,51 @@ void lista_liga(element * LISTA, char * nome){
 		percorre = percorre->prox;
 	}
 }
+//INSERE NA LISTA
+void lista_insere(element * LISTA, const char * nome, const char * numero, int qnt){
+	element * percorre = LISTA;
+	element * novo = lista_inicia();
+
+	while(percorre->prox != NULL) percorre = percorre->prox;
+
+	percorre->prox = novo;
+	memcpy(novo->nome, nome, strlen(nome)+1);
+	memcpy(novo->tel, numero, strlen(numero)+1);
+	novo->ligacoes = qnt;
+}
+
+//REMOVE DA LISTA
+void lista_remove(element * LISTA, char * nome){
+	element * atual = LISTA->prox;
+	element * anterior = LISTA;
+
+	while(atual!=NULL){
+		if(strcmp(atual->nome, nome)==0){
+			anterior->prox = atual->prox;
+			free(atual);
+			break;
+		}
+		anterior = atual;
+		atual = atual -> prox;
+	}
+}
+
+//IMPRIME LISTA
+void lista_imprime(element * LISTA){
+	element * percorre = LISTA->prox;
+
+	while(percorre!=NULL){
+		printf("%s - %s\n", percorre->nome, percorre->tel);
+		percorre = percorre->prox;
+	}
+}
+
+//RETORNA O TAMANHO DA LISTA
+int lista_size(element * LISTA){
+	int c=0;
+	while(LISTA->prox!=NULL){
+		LISTA = LISTA->prox;
+		c++;
+	}
+	return c;
+}
