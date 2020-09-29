@@ -149,3 +149,41 @@ void lista_ordena(element * LISTA){
 	}
 
 }
+
+
+int main(){
+	element * LISTA = lista_inicia();
+	lista_insere(LISTA, (char *)"Hermanoteu", (char *)"4523-2248", 300);
+	lista_insere(LISTA, (char *)"Oolonéia", (char *)"4523-4887", 299);
+
+	while(1){
+		char op;
+		char nome[20], tel[10];
+		int qntLigacoes;
+
+		scanf(" %c", &op);
+		if(op == 'F'){
+			lista_ordena(LISTA);
+			//printf("\n\n");
+			lista_imprime(LISTA);
+			return 0;	
+		} 
+		else if(op == 'L'){
+			scanf(" %s", nome);
+			lista_liga(LISTA, nome);
+		}
+		else if(op == 'I'){
+			scanf(" %s", nome);
+			scanf(" %s", tel);
+			scanf(" %d", &qntLigacoes);
+			lista_insere(LISTA, nome, tel, qntLigacoes);
+		}
+		else if(op == 'R'){
+			scanf("%s", nome);
+			lista_remove(LISTA, nome);
+		}
+		//else printf("OPÇÃO ERRADA!\n");
+	}
+
+
+}
