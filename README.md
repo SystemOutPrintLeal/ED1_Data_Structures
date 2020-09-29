@@ -3,4 +3,4 @@
 
 <h4>Exercicios da lista de LISTA e DEQUE</h4>
 
-<p>Aluno : Victor Leal Martins</p>
+<p>Aluno : Victor Leal Martinsgit a</p>
