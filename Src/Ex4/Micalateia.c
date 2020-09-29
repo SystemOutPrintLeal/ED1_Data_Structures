@@ -182,7 +182,7 @@ int main(){
 			scanf("%s", nome);
 			lista_remove(LISTA, nome);
 		}
-		//else printf("OPÇÃO ERRADA!\n");
+		else printf("OPÇÃO ERRADA!\n");
 	}
 
 
