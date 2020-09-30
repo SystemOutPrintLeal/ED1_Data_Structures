@@ -35,26 +35,22 @@ void InsereLista(element *Neto, char *Nome)
     percorre->prox = novoNeto;
     memcpy(*novoNeto->nomeNeto, Nome, strlen(Nome) + 1);
     *novoNeto->sentido = "horario";
-
 }
 
-element *buscaNeto(element* Neto , char* nome){
+element* buscaNeto(element *Neto, char *nome)
+{
     while (Neto != NULL)
     {
-        if(Neto->nomeNeto == nome) return Neto;
+        if (Neto->nomeNeto == nome) return Neto;
         Neto = Neto->prox;
-
     }
     return NULL;
+}
+
+void MudaSentido(char * nome , char * sentido)
+{
     
-
 }
-
-void MudaSentido(char * Sentido){
-
-}
-
-
 
 void main()
 {
